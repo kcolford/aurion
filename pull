@@ -1,0 +1,15 @@
+#!/bin/sh
+for d
+do
+    if [ -d $d ]
+    then
+	git subtree pull -P $d https://aur.archlinux.org/$d master
+    else
+	git subtree add -P $d https://aur.archlinux.org/$d master
+    fi
+    cd $d
+    makepkg
+    cd -
+    repo-add aurion.db.tar.gz $d/*.pkg.tar*
+    mv $d/*.pkg.tar* .
+done
