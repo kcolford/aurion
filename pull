@@ -3,9 +3,9 @@ for d
 do
     if [ -d $d ]
     then
-	git subtree pull -P $d https://aur.archlinux.org/$d master
+	git subtree pull -P $d https://aur.archlinux.org/$d HEAD
     else
-	git subtree add -P $d https://aur.archlinux.org/$d master
+	git subtree add -P $d https://aur.archlinux.org/$d HEAD
     fi
     cd $d
     makepkg -crs
