@@ -8,6 +8,6 @@ do
 	git subtree add -P "$d" https://aur.archlinux.org/"$d" HEAD
     fi
     ( cd "$d" && makepkg -crs )
-    repo-add aurion.db.tar.xz "$d"/*.pkg.tar*
+    repo-add -d -R aurion.db.tar.xz "$d"/*.pkg.tar*
     mv "$d"/*.pkg.tar* .
 done
