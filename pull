@@ -7,7 +7,10 @@ do
     else
 	git subtree add -P "$d" https://aur.archlinux.org/"$d" HEAD
     fi
-    ( cd "$d" && makepkg -crs )
+done
+parallel "cd '$d' && makepkg -crs" ::: "$@"
+for d
+do
     repo-add aurion.db.tar.xz "$d"/*.pkg.tar*
     mv "$d"/*.pkg.tar* .
 done
