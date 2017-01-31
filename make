@@ -1,2 +1,3 @@
 #!/bin/sh
-parallel ./pull ::: aur/* && parallel ./rebuild ::: aur/* && ./upload
+for i in aur/*; do ./pull "$i"; done
+parallel ./rebuild ::: aur/* && ./upload
