@@ -1,3 +1,4 @@
+/aur/*/*.pkg.tar*
+/aurion/
 /build/
 /src/
-/aur/*/*.pkg.tar*
