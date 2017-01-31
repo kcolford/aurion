@@ -1,2 +1,2 @@
 #!/bin/sh
-exec rsync -r build/ root@kcolford.com:/srv/http/aurion
+exec rsync -lr build/ root@kcolford.com:/srv/http/aurion
