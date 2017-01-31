@@ -1,5 +1,5 @@
 #!/bin/sh
-mkdir -p build src
-parallel 'mkdir -p src/{}' ::: "$@"
-parallel 'cd {} && PKGDEST=../../build SRCDEST=../../src/{} makepkg -crs' ::: "$@"
-repo-add -d build/aurion.db.tar.xz build/*.pkg.tar*
+export PKGDEST="$(pwd)"/build
+export SRCDEST="$(pwd)"/src/"$1"
+mkdir -p "$PKGDEST" "$SRCDEST"
+cd "$1" && makepkg -crs

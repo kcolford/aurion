@@ -1,2 +1,2 @@
 #!/bin/sh
-./pull aur/* && ./rebuild aur/* && ./upload
+parallel ./pull ::: aur/* && parallel ./rebuild ::: aur/* && ./upload
