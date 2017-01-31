@@ -1,4 +1,5 @@
 #!/bin/sh
-for i in aur/*; do ./pull "$i"; done
-parallel ./rebuild ::: aur/*
+if [ $# = 0 ]; then set -- aur/*; fi
+for i in "$@"; do ./pull "$i"; done
+for i in "$@"; do ./rebuild "$i"; done
 ./upload
