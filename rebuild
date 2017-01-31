@@ -1,7 +1,7 @@
 #!/bin/sh
-cd "$1" || exit
-export BUILDDIR=../../build/build/"$1"
-export PKGDEST=../../aurion
-export SRCDEST=../../build/src/"$1"
+export BUILDDIR="$(pwd)"/build/build/"$1"
+export PKGDEST="$(pwd)"/aurion
+export SRCDEST="$(pwd)"/build/src/"$1"
 mkdir -p "$BUILDDIR" "$PKGDEST" "$SRCDEST"
+cd "$1" || exit
 makepkg -crs
