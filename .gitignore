@@ -1,4 +1,2 @@
-/*.db*
-/*.files*
-/*.pkg.tar*
-/*/*
+/aur/*/*
+/build

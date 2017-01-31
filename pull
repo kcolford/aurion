@@ -3,10 +3,11 @@ for d
 do
     if [ -d "$d" ]
     then
-	git subtree pull -P "$d" https://aur.archlinux.org/"$d" HEAD
+	git subtree pull -P "$d" https://aur.archlinux.org/"$(basename "$d")" master
     else
-	git subtree add -P "$d" https://aur.archlinux.org/"$d" HEAD
+	git subtree add -P "$d" https://aur.archlinux.org/"$(basename "$d")" master
     fi
-    ( cd "$d" && PKGDEST=.. makepkg -s )
-    repo-add -d -R aurion.db.tar.xz "$d"-*.pkg.tar.xz
+    mkdir -p build
+    ( cd "$d" && PKGDEST=../../build makepkg -s )
+    ( cd build && repose -Jf aurion )
 done
