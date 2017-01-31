@@ -8,9 +8,4 @@ do
     else
 	git subtree add -P "$d" https://aur.archlinux.org/"$(basename "$d")" master
     fi
-    #( cd "$d" && PKGDEST=../../build makepkg -crs )
-    #( cd build && repose -Jf aurion )
 done
-parallel 'cd {} && PKGDEST=../../build makepkg -crs' ::: "$@"
-cd build || exit
-repose -J aurion

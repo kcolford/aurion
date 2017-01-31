@@ -1,2 +1,3 @@
 #!/bin/sh
-exec ./pull aur/*
+parallel 'cd {} && PKGDEST=../../build makepkg -crs' ::: "$@"
+cd build && repose -J aurion
