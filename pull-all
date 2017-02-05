@@ -1,0 +1,4 @@
+#!/bin/sh
+for i in aur/*; do
+    ./pull "$i"
+done
