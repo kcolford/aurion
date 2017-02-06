@@ -1,6 +1,6 @@
 #!/bin/sh
 for cmd; do
-    for pkg in aur/*; do
+    for pkg in {aur,core,extra,community}/*; do
 	./"$cmd" "$pkg"
     done
 done
