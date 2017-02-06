@@ -1,4 +1,3 @@
 #!/bin/sh
-reponame=aurion
-repo-add -d -n -R build/repo/$reponame.db.tar.xz build/repo/*.pkg.tar*
-rsync -l build/repo/ root@kcolford.com:/srv/http/$reponame
+repo-add -d -n -R build/repo/aurion.db.tar.xz build/repo/*.pkg.tar*
+rsync -l build/repo/ root@kcolford.com:/srv/http/aurion

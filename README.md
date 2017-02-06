@@ -9,8 +9,9 @@ serve at https://kcolford.com/aurion/. You can add the repo by adding
 	Server = https://kcolford.com/$repo/
 
 Anyone can maintain their own packages using a fork of this
-repository. Just make sure to edit the `upload` script to your liking
-rather than my configuration.
-
-This is primarily useful for abandoning AUR helpers and just use
-`pacman`, the greatest package manager in the world.
+repository. Make sure to edit the `upload` script for your own
+server. The `init` script will initialize each package for you.  Use
+the `pull` script to both register new packages and update existing
+ones. Finally, the `rebuild` script with build each package. As a
+little helper, the `all` script is for batch running the other scripts
+on the registered packages.
