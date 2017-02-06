@@ -1,6 +1,8 @@
 #!/bin/sh
 for cmd; do
     for pkg in {aur,core,extra,community}/*; do
-	./"$cmd" "$pkg"
+	if [ -e "$pkg" ]; then
+            ./"$cmd" "$pkg"
+	fi
     done
 done
