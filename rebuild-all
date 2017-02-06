@@ -1,4 +1,0 @@
-#!/bin/sh
-for i in aur/*; do
-    ./rebuild "$i"
-done

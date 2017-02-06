@@ -1,7 +1,9 @@
 #!/bin/sh
 if [ -d "$1" ]
 then
-    git subtree pull -P "$1" https://aur.archlinux.org/"$(basename "$1")" HEAD
+    ./init "$1"
+    git -C "$1" pull
 else
-    git subtree add -P "$1" https://aur.archlinux.org/"$(basename "$1")" HEAD
+    git submodule add https://aur.archlinux.org/"$(basename "$1")" "$1"
+    ./init "$1"
 fi

@@ -1,0 +1,51 @@
+[submodule "aur/modprobed-db"]
+	path = aur/modprobed-db
+	url = https://aur.archlinux.org/modprobed-db
+[submodule "aur/arch-audit"]
+	path = aur/arch-audit
+	url = https://aur.archlinux.org/arch-audit
+[submodule "aur/browserpass"]
+	path = aur/browserpass
+	url = https://aur.archlinux.org/browserpass
+[submodule "aur/calise-git"]
+	path = aur/calise-git
+	url = https://aur.archlinux.org/calise-git
+[submodule "aur/chromium-widevine"]
+	path = aur/chromium-widevine
+	url = https://aur.archlinux.org/chromium-widevine
+[submodule "aur/cower"]
+	path = aur/cower
+	url = https://aur.archlinux.org/cower
+[submodule "aur/cylon"]
+	path = aur/cylon
+	url = https://aur.archlinux.org/cylon
+[submodule "aur/ddns-git"]
+	path = aur/ddns-git
+	url = https://aur.archlinux.org/ddns-git
+[submodule "aur/grub-holdshift"]
+	path = aur/grub-holdshift
+	url = https://aur.archlinux.org/grub-holdshift
+[submodule "aur/lenovo-thinkpad-yoga-11e-chromebook-git"]
+	path = aur/lenovo-thinkpad-yoga-11e-chromebook-git
+	url = https://aur.archlinux.org/lenovo-thinkpad-yoga-11e-chromebook-git
+[submodule "aur/linux-max98090"]
+	path = aur/linux-max98090
+	url = https://aur.archlinux.org/linux-max98090
+[submodule "aur/lostfiles"]
+	path = aur/lostfiles
+	url = https://aur.archlinux.org/lostfiles
+[submodule "aur/pepper-flash"]
+	path = aur/pepper-flash
+	url = https://aur.archlinux.org/pepper-flash
+[submodule "aur/physlock"]
+	path = aur/physlock
+	url = https://aur.archlinux.org/physlock
+[submodule "aur/python2-pyephem"]
+	path = aur/python2-pyephem
+	url = https://aur.archlinux.org/python2-pyephem
+[submodule "aur/webmin"]
+	path = aur/webmin
+	url = https://aur.archlinux.org/webmin
+[submodule "aur/xss-lock"]
+	path = aur/xss-lock
+	url = https://aur.archlinux.org/xss-lock
