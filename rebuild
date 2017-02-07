@@ -6,10 +6,8 @@ mkdir -p "$BUILDDIR" "$PKGDEST" "$SRCDEST"
 cd "$1" || exit
 case "$(dirname "$1")" in
     my-aur)
-	makepkg -Cs
-	makepkg --printsrcinfo > .SRCINFO
 	updpkgsums
+	makepkg --printsrcinfo > .SRCINFO
 	;;
-    *)
-	makepkg -Cs
 esac
+makepkg -Cs

@@ -3,6 +3,7 @@ case "$(dirname "$1")" in
     my-aur)
 	./rebuild "$1"
 	git -C "$1" commit -am "Update $(basename "$1")"
-	git -C "$1" push
+	git -C "$1" push ssh://aur@aur.archlinux.org/"$(basename "$1")" master
+	./pull "$1"
 	;;
 esac

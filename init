@@ -1,6 +1,6 @@
 #!/bin/sh
 case "$(dirname "$1")" in
-    aur)
+    aur|my-aur)
 	git submodule update --init --recursive "$1"
 	echo '*.pkg.tar*' >> .git/modules/"$1"/info/exclude
 	;;

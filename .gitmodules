@@ -19,15 +19,9 @@
 [submodule "aur/cylon"]
 	path = aur/cylon
 	url = https://aur.archlinux.org/cylon
-[submodule "aur/ddns-git"]
-	path = my-aur/ddns-git
-	url = https://aur.archlinux.org/ddns-git
 [submodule "aur/grub-holdshift"]
 	path = aur/grub-holdshift
 	url = https://aur.archlinux.org/grub-holdshift
-[submodule "aur/lenovo-thinkpad-yoga-11e-chromebook-git"]
-	path = my-aur/lenovo-thinkpad-yoga-11e-chromebook-git
-	url = https://aur.archlinux.org/lenovo-thinkpad-yoga-11e-chromebook-git
 [submodule "aur/linux-max98090"]
 	path = aur/linux-max98090
 	url = https://aur.archlinux.org/linux-max98090
@@ -49,3 +43,18 @@
 [submodule "aur/xss-lock"]
 	path = aur/xss-lock
 	url = https://aur.archlinux.org/xss-lock
+[submodule "my-aur/ddns"]
+	path = my-aur/ddns
+	url = https://aur.archlinux.org/ddns
+[submodule "my-aur/hidclient"]
+	path = my-aur/hidclient
+	url = https://aur.archlinux.org/hidclient
+[submodule "my-aur/pacman-cycles-git"]
+	path = my-aur/pacman-cycles-git
+	url = https://aur.archlinux.org/pacman-cycles-git
+[submodule "my-aur/ddns-git"]
+	path = my-aur/ddns-git
+	url = https://aur.archlinux.org/ddns-git
+[submodule "my-aur/lenovo-thinkpad-yoga-11e-chromebook-git"]
+	path = my-aur/lenovo-thinkpad-yoga-11e-chromebook-git
+	url = https://aur.archlinux.org/lenovo-thinkpad-yoga-11e-chromebook-git
