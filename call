@@ -1,0 +1,8 @@
+#!/bin/sh
+for cmd; do
+    for pkg in aur/* my-aur/* core/* extra/* community/*; do
+	if [ -e "$pkg" ]; then
+	    ./"$cmd" "$pkg"
+	fi
+    done
+done

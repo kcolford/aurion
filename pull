@@ -1,9 +1,10 @@
 #!/bin/sh
 case "$(dirname "$1")" in
-    aur)
+    aur|my-aur)
 	if [ -d "$1" ]
 	then
 	    ./init "$1"
+	    git -C "$1" checkout master
 	    git -C "$1" pull
 	else
 	    git submodule add https://aur.archlinux.org/"$(basename "$1")" "$1"

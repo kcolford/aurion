@@ -20,13 +20,13 @@
 	path = aur/cylon
 	url = https://aur.archlinux.org/cylon
 [submodule "aur/ddns-git"]
-	path = aur/ddns-git
+	path = my-aur/ddns-git
 	url = https://aur.archlinux.org/ddns-git
 [submodule "aur/grub-holdshift"]
 	path = aur/grub-holdshift
 	url = https://aur.archlinux.org/grub-holdshift
 [submodule "aur/lenovo-thinkpad-yoga-11e-chromebook-git"]
-	path = aur/lenovo-thinkpad-yoga-11e-chromebook-git
+	path = my-aur/lenovo-thinkpad-yoga-11e-chromebook-git
 	url = https://aur.archlinux.org/lenovo-thinkpad-yoga-11e-chromebook-git
 [submodule "aur/linux-max98090"]
 	path = aur/linux-max98090
