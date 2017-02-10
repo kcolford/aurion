@@ -4,10 +4,4 @@ export PKGDEST="$PWD"/build/repo
 export SRCDEST="$PWD"/build/src/"$1"
 mkdir -p "$BUILDDIR" "$PKGDEST" "$SRCDEST"
 cd "$1" || exit
-case "$(dirname "$1")" in
-    my-aur)
-	updpkgsums
-	makepkg --printsrcinfo > .SRCINFO
-	;;
-esac
-makepkg -s
+bash
