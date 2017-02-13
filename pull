@@ -1,4 +1,5 @@
 #!/bin/sh
+[ "$1" ] || exit
 case "$(dirname "$1")" in
     aur|my-aur)
 	if [ -d "$1" ]
@@ -12,6 +13,6 @@ case "$(dirname "$1")" in
 	fi
 	;;
     core|extra|community)
-	ABSROOT=. abs "$1"
+	ABSROOT=. abs "$(dirname "$1")/$(basename "$1")"
 	;;
 esac

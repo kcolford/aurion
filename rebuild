@@ -1,13 +1,18 @@
 #!/bin/sh
-export BUILDDIR="$PWD"/build/build/"$1"
-export PKGDEST="$PWD"/build/repo
-export SRCDEST="$PWD"/build/src/"$1"
-mkdir -p "$BUILDDIR" "$PKGDEST" "$SRCDEST"
-cd "$1" || exit
+if [ ! "$FIX_PACKAGE_NAME" ]; then
+    exec ./fix-build "$1" "$PWD"/rebuild "$@"
+fi
 case "$(dirname "$1")" in
     my-aur)
 	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
+
+	makepkg -s
+
+	git add -u
+	git commit -m "Update $(basename "$1")"
+	;;
+    *)
+	makepkg -s
 	;;
 esac
-makepkg -s

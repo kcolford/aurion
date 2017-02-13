@@ -1,7 +1,9 @@
 #!/bin/sh
+[ "$1" ] || exit
 case "$(dirname "$1")" in
     aur|my-aur)
 	git submodule update --init --recursive "$1"
 	echo '*.pkg.tar*' >> .git/modules/"$1"/info/exclude
+	echo '*.delta' >> .git/modules/"$1"/info/exclude
 	;;
 esac

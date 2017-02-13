@@ -55,3 +55,6 @@
 [submodule "my-aur/lenovo-thinkpad-yoga-11e-chromebook-git"]
 	path = my-aur/lenovo-thinkpad-yoga-11e-chromebook-git
 	url = https://aur.archlinux.org/lenovo-thinkpad-yoga-11e-chromebook-git
+[submodule "aur/linux-max98090"]
+	path = aur/linux-max98090
+	url = https://aur.archlinux.org/linux-max98090
