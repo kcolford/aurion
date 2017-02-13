@@ -1,15 +1,10 @@
 #!/bin/sh
+url=root@zeus:/srv/http/aurion	# configure this
+
 dir=build/repo
-url=root@zeus:/srv/http/aurion
 mkdir -p $dir
-rsync -lr $url/ $dir
-if [ -d "$1" ]; then
-    for pkgfile in $dir/"$(basename "$1")"-*.pkg.tar*; do
-	if [ -e "$pkgfile" ]; then
-	    ln -srf "$pkgfile" "$1"
-	    repo-add -d -n -R $dir/aurion.db.tar.xz "$pkgfile"
-	    rsync "$pkgfile" $url/
-	fi
-    done
-fi
-rsync -lr --delete $dir/ $url
+rsync -lr "$url"/ $dir
+for repo in $dir/*.db; do
+    [ -e "$repo" ] && repo-add -d -n -R "$repo"  $dir/*.pkg.tar*
+done
+rsync -lr --delete $dir/ "$url"

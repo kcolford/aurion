@@ -1,11 +1,13 @@
 #!/bin/sh
 [ "$1" ] || exit
 
+. ./upload
 for repo in build/repo/*.db; do
     if [ -e "$repo" ]; then
 	repo-remove "$repo" "$(basename "$1")"
     fi
 done
+rsync -lr --delete build/repo/ $url
 
 case "$(dirname "$1")" in
     aur|my-aur)

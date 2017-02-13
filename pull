@@ -1,18 +1,24 @@
 #!/bin/sh
 [ "$1" ] || exit
+excludefile="$1"/.gitignore
 case "$(dirname "$1")" in
     aur|my-aur)
 	if [ -d "$1" ]
 	then
-	    ./init "$1"
+	    git submodule update --init --recursive "$1"
 	    git -C "$1" checkout master
 	    git -C "$1" pull
 	else
 	    git submodule add https://aur.archlinux.org/"$(basename "$1")" "$1"
-	    ./init "$1"
 	fi
+	excludefile=.git/modules/"$1"/info/exclude
 	;;
     core|extra|community)
 	ABSROOT=. abs "$(dirname "$1")/$(basename "$1")"
 	;;
 esac
+for exclude in '*.tar.pkg*'; do
+    if ! fgrep -q "$exclude" "$excludefile"; then
+	echo "$exclude" >> "$excludefile"
+    fi
+done

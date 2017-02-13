@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ ! "$FIX_PACKAGE_NAME" ]; then
+if [ ! "$FIX_BUILD_IN_USE" ]; then
     exec ./fix-build "$1" "$PWD"/rebuild "$@"
 fi
 case "$(dirname "$1")" in
