@@ -58,3 +58,6 @@
 [submodule "aur/linux-max98090"]
 	path = aur/linux-max98090
 	url = https://aur.archlinux.org/linux-max98090
+[submodule "aur/android-studio"]
+	path = aur/android-studio
+	url = https://aur.archlinux.org/android-studio

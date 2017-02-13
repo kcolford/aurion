@@ -3,9 +3,7 @@
 
 . ./upload
 for repo in build/repo/*.db; do
-    if [ -e "$repo" ]; then
-	repo-remove "$repo" "$(basename "$1")"
-    fi
+    repo="$(readlink -f "$repo")" && repo-remove "$repo" "$(basename "$1")"
 done
 rsync -lr --delete build/repo/ $url
 
