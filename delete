@@ -2,7 +2,7 @@
 [ "$1" ] || exit
 
 for repo in build/repo/*.db; do
-    repo="$(readlink -f "$repo")" && repo-remove "$repo" "$(basename "$1")"
+    repo="$(readlink -e "$repo")" && repo-remove "$repo" "$(basename "$1")"
 done
 url="$(cat global-url)"
 rsync -lr --delete build/repo/ "$url"

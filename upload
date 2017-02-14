@@ -4,6 +4,6 @@ dir=build/repo
 mkdir -p $dir
 rsync -lru "$url"/ $dir
 for repo in $dir/*.db; do
-    repo="$(readlink -f "$repo")" && repo-add -n -R "$repo"  $dir/*.pkg.tar*
+    repo="$(readlink -e "$repo")" && repo-add -n -R "$repo"  $dir/*.pkg.tar*
 done
 rsync -lr --delete $dir/ "$url"
