@@ -17,6 +17,7 @@ case "$(dirname "$1")" in
 	ABSROOT=. abs "$(dirname "$1")/$(basename "$1")"
 	;;
 esac
+touch "$excludefile"
 # shellcheck disable=SC2041
 for exclude in '*.pkg.tar*'; do
     if ! fgrep -q "$exclude" < "$excludefile"; then

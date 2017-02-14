@@ -1,6 +1,5 @@
 #!/bin/sh
-url=root@zeus:/srv/http/aurion	# configure this
-
+url="$(cat global-url)"
 dir=build/repo
 mkdir -p $dir
 rsync -lru "$url"/ $dir

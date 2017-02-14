@@ -1,11 +1,11 @@
 #!/bin/sh
 [ "$1" ] || exit
 
-. ./upload
 for repo in build/repo/*.db; do
     repo="$(readlink -f "$repo")" && repo-remove "$repo" "$(basename "$1")"
 done
-rsync -lr --delete build/repo/ $url
+url="$(cat global-url)"
+rsync -lr --delete build/repo/ "$url"
 
 case "$(dirname "$1")" in
     aur|my-aur)
