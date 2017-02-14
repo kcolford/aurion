@@ -18,7 +18,7 @@ case "$(dirname "$1")" in
 	;;
 esac
 # shellcheck disable=SC2041
-for exclude in '*.tar.pkg*'; do
+for exclude in '*.pkg.tar*'; do
     if ! fgrep -q "$exclude" < "$excludefile"; then
 	echo "$exclude" >> "$excludefile"
     fi

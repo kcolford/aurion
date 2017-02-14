@@ -61,3 +61,6 @@
 [submodule "aur/android-studio"]
 	path = aur/android-studio
 	url = https://aur.archlinux.org/android-studio
+[submodule "aur/android-sdk"]
+	path = aur/android-sdk
+	url = https://aur.archlinux.org/android-sdk
