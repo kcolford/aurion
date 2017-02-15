@@ -64,3 +64,12 @@
 [submodule "aur/android-sdk"]
 	path = aur/android-sdk
 	url = https://aur.archlinux.org/android-sdk
+[submodule "aur/android-sdk-platform-tools"]
+	path = aur/android-sdk-platform-tools
+	url = https://aur.archlinux.org/android-sdk-platform-tools
+[submodule "aur/android-sdk-build-tools"]
+	path = aur/android-sdk-build-tools
+	url = https://aur.archlinux.org/android-sdk-build-tools
+[submodule "aur/android-bash-completion"]
+	path = aur/android-bash-completion
+	url = https://aur.archlinux.org/android-bash-completion
