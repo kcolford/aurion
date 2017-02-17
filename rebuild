@@ -1,7 +1,7 @@
 #!/bin/sh
 scndarg=already-recursed
 [ -d "$1" ] || exit
-[ "$2" = $scndarg ] || exec ./fix-build "$1" ./rebuild "$1" $scndarg
+[ "$2" = $scndarg ] || exec ./fix-build "$1" "$PWD"/rebuild "$1" $scndarg
 d="$(dirname "$1")"
 b="$(basename "$1")"
 makepkg -s
