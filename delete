@@ -1,5 +1,5 @@
 #!/bin/sh
-[ "$1" ] || exit
+[ -d "$1" ] || exit
 d="$(dirname "$1")"
 b="$(basename "$1")"
 
@@ -17,9 +17,10 @@ case "$d" in
 	;;
 esac
 
-# remove the package from the repo
+
 for repo in build/repo/*.db; do
     if repo="$(readlink -e "$repo")"; then
+	# remove the package from the repo
 	repo-remove "$repo" "$b"
     fi
 done

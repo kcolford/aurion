@@ -1,5 +1,5 @@
 #!/bin/sh
-[ "$1" ] || exit
+[ -d "$1" ] || exit
 
 # setup build directories
 export BUILDDIR="$PWD"/build/build/"$1"

@@ -1,6 +1,6 @@
 #!/bin/sh
 scndarg=already-recursed
-[ "$1" ] || exit
+[ -d "$1" ] || exit
 [ "$2" = $scndarg ] || exec ./fix-build "$1" ./rebuild "$1" $scndarg
 d="$(dirname "$1")"
 b="$(basename "$1")"

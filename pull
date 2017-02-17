@@ -31,7 +31,5 @@ esac
 
 # update ignore files so git is happy
 touch "${excludefile:=$1/.gitignore}"
-# shellcheck disable=SC2041
-for exclude in '/*.pkg.tar*'; do
-    fgrep -q "$exclude" "$excludefile" || echo "$exclude" >> "$excludefile"
-done
+exclude='/*.pkg.tar*'
+fgrep -q "$exclude" "$excludefile" || echo "$exclude" >> "$excludefile"
