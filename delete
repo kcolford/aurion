@@ -7,20 +7,23 @@ b="$(basename "$1")"
 rm -rf "\$BUILDDIR" "\$SRCDEST"
 EOF
 rm -rf "$1"
+
+# remove submodule extras
 case "$d" in
     aur|my-aur)
 	git config --remove-section submodule."$1"
-
-	git submodule deinit "$1"
-	git rm -f "$1"
+	git config -f .gitmodules --remove-section submodule."$1"
+	rm -rf .git/modules/"$1"
 	;;
 esac
 
+# remove the package from the repo
 for repo in build/repo/*.db; do
     if repo="$(readlink -e "$repo")"; then
 	repo-remove "$repo" "$b"
     fi
 done
 
+# update the remote about the removal
 read -r url < global-url
 rsync -lr --delete build/repo/ "$url"
