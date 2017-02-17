@@ -73,3 +73,6 @@
 [submodule "aur/android-bash-completion"]
 	path = aur/android-bash-completion
 	url = https://aur.archlinux.org/android-bash-completion
+[submodule "aur/android-platform"]
+	path = aur/android-platform
+	url = https://aur.archlinux.org/android-platform
