@@ -4,17 +4,11 @@ scndarg=already-recursed
 [ "$2" = $scndarg ] || exec ./fix-build "$1" ./rebuild "$1" $scndarg
 d="$(dirname "$1")"
 b="$(basename "$1")"
-case "$d" in
-    my-aur)
-	updpkgsums
-	makepkg --printsrcinfo > .SRCINFO
-
-	makepkg -s
-
-	git add -u
-	git commit -m "Update $b"
-	;;
-    *)
-	makepkg -s
-	;;
-esac
+makepkg -s
+if [ "$d" = my-aur ]; then
+    updpkgsums
+    makepkg --printsrcinfo > .SRCINFO
+    makepkg -s
+    git add -u
+    git commit -m "Update $b"
+fi

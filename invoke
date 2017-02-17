@@ -1,16 +1,9 @@
 #!/bin/sh
-
-# call each listed command on all the packages in order
-
 for cmd; do
     if [ -x ./"$cmd" ]; then
 	cmd=./"$cmd"
     fi
-    for pkgdir in */; do
-	if [ -e "$pkgdir" ] && [ "$pkgdir" != "build/" ]; then
-	    for pkg in "$pkgdir"/*; do
-		[ -e "$pkg" ] && "$cmd" "$pkg"
-	    done
-	fi
-    done
+    shell=parallel
+    which $shell > /dev/null || shell=sh
+    ./list | sed "s=^=$cmd =" | $shell
 done

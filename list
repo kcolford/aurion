@@ -1,0 +1,10 @@
+#!/bin/sh
+for pkgdir in *; do
+    if [ -d "$pkgdir" ] && [ "$pkgdir" != build ]; then
+	for pkg in "$pkgdir"/*; do
+	    if [ -d "$pkg" ]; then
+		echo "$pkg"
+	    fi
+	done
+    fi
+done

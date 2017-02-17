@@ -1,15 +1,23 @@
 #!/bin/sh
 [ "$1" ] || exit
+
+# setup build directories
 export BUILDDIR="$PWD"/build/build/"$1"
 export PKGDEST="$PWD"/build/repo
 export SRCDEST="$PWD"/build/src/"$1"
 mkdir -p "$BUILDDIR" "$PKGDEST" "$SRCDEST"
+
+# symlink already built packages so we don't rebuild ones downloaded
+# by ./upload
 for pkg in build/repo/"$1"-*.pkg.tar*; do
     [ -e "$pkg" ] && ln -srf "$pkg" "$1"
 done
+
+# change directories and run either a shell or whatever command was
+# specified in the rest of the args
 cd "$1" || exit
 shift
 if [ $# = 0 ]; then
-    set -- bash
+    set -- "${SHELL:=sh}"
 fi
-"$@"
+exec "$@"

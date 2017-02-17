@@ -2,18 +2,25 @@
 [ "$1" ] || exit
 d="$(dirname "$1")"
 b="$(basename "$1")"
+
+./fix-rebuild "$1" <<EOF
+rm -rf "\$BUILDDIR" "\$SRCDEST"
+EOF
+rm -rf "$1"
 case "$d" in
     aur|my-aur)
+	git config --remove-section submodule."$1"
+
 	git submodule deinit "$1"
 	git rm -f "$1"
-	;;
-    *)
-	rm -rf "$1"
 	;;
 esac
 
 for repo in build/repo/*.db; do
-    repo="$(readlink -e "$repo")" && repo-remove "$repo" "$b"
+    if repo="$(readlink -e "$repo")"; then
+	repo-remove "$repo" "$b"
+    fi
 done
+
 read -r url < global-url
 rsync -lr --delete build/repo/ "$url"

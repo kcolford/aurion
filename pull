@@ -3,29 +3,35 @@ aur=aur.archlinux.org
 [ "$1" ] || exit
 d="$(dirname "$1")"
 b="$(basename "$1")"
+mkdir -p "$d"
+
+# use git to clone from the aur
+aur_clone() {
+    if [ ! -d "$1" ]; then
+	git config -f .gitmodules submodule."$1".path "$1"
+	git config -f .gitmodules submodule."$1".url https://$aur/"$b"
+    fi
+    git submodule update --init --remote "$1"
+    excludefile=.git/modules/"$1"/info/exclude
+}
+
 case "$d" in
-    aur|my-aur)
-	if [ -d "$1" ]
-	then
-	    git submodule update --init --recursive "$1"
-	    git -C "$1" checkout master
-	    git -C "$1" pull
-	else
-	    git submodule add https://$aur/"$b" "$1"
-	fi
-	if [ "$d" = my-aur ]; then
-	    git -C "$1" config url.ssh://aur@$aur/"$b".pushInsteadOf https://$aur/"$b"
-	fi
-	excludefile=.git/modules/"$1"/info/exclude
+    aur)
+	aur_clone "$1"
+	;;
+    my-aur)
+	aur_clone "$1"
+	git -C "$1" config url.ssh://aur@$aur/"$b".pushInsteadOf https://$aur/"$b"
 	;;
     core|extra|community)
+	which abs > /dev/null || exit
 	ABSROOT=. abs "$d/$b"
 	;;
 esac
+
+# update ignore files so git is happy
 touch "${excludefile:=$1/.gitignore}"
 # shellcheck disable=SC2041
-for exclude in '*.pkg.tar*'; do
-    if ! fgrep -q "$exclude" < "$excludefile"; then
-	echo "$exclude" >> "$excludefile"
-    fi
+for exclude in '/*.pkg.tar*'; do
+    fgrep -q "$exclude" "$excludefile" || echo "$exclude" >> "$excludefile"
 done
