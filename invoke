@@ -6,13 +6,11 @@ for cmd; do
     if [ -x ./"$cmd" ]; then
 	cmd=./"$cmd"
     fi
-
     for pkgdir in */; do
-	# shellcheck disable=SC2015
-	[ -e "$pkgdir" ] && [ "$pkgdir" != "build/" ] || continue
-
-	for pkg in "$pkgdir"/*; do
-	    [ -e "$pkg" ] && "$cmd" "$pkg"
-	done
+	if [ -e "$pkgdir" ] && [ "$pkgdir" != "build/" ]; then
+	    for pkg in "$pkgdir"/*; do
+		[ -e "$pkg" ] && "$cmd" "$pkg"
+	    done
+	fi
     done
 done

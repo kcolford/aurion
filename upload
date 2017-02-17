@@ -1,9 +1,11 @@
 #!/bin/sh
-url="$(cat global-url)"
+read -r url < global-url
 dir=build/repo
 mkdir -p $dir
 rsync -lru "$url"/ $dir
 for repo in $dir/*.db; do
-    repo="$(readlink -e "$repo")" && repo-add -n -R "$repo"  $dir/*.pkg.tar*
+    if repo="$(readlink -e "$repo")"; then
+	repo-add -n -R "$repo"  $dir/*.pkg.tar*
+    fi
 done
 rsync -lr --delete $dir/ "$url"

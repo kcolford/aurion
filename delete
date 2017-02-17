@@ -1,7 +1,8 @@
 #!/bin/sh
 [ "$1" ] || exit
-
-case "$(dirname "$1")" in
+d="$(dirname "$1")"
+b="$(basename "$1")"
+case "$d" in
     aur|my-aur)
 	git submodule deinit "$1"
 	git rm -f "$1"
@@ -12,7 +13,7 @@ case "$(dirname "$1")" in
 esac
 
 for repo in build/repo/*.db; do
-    repo="$(readlink -e "$repo")" && repo-remove "$repo" "$(basename "$1")"
+    repo="$(readlink -e "$repo")" && repo-remove "$repo" "$b"
 done
-url="$(cat global-url)"
+read -r url < global-url
 rsync -lr --delete build/repo/ "$url"
