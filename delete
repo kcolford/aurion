@@ -3,9 +3,8 @@
 d="$(dirname "$1")"
 b="$(basename "$1")"
 
-./fix-rebuild "$1" <<EOF
-rm -rf "\$BUILDDIR" "\$SRCDEST"
-EOF
+# delete build files
+rm -rf build/"$b"
 rm -rf "$1"
 
 # remove submodule extras
@@ -17,14 +16,12 @@ case "$d" in
 	;;
 esac
 
-
-for repo in build/repo/*.db; do
+for repo in packages/*.db; do
     if repo="$(readlink -e "$repo")"; then
-	# remove the package from the repo
-	repo-remove "$repo" "$b"
+	repo-remove "$repo" "$b" # remove the package from the repo
     fi
 done
 
 # update the remote about the removal
 read -r url < global-url
-rsync -lr --delete build/repo/ "$url"
+rsync -lr --delete packages/ "$url"

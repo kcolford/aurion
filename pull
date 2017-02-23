@@ -11,7 +11,7 @@ aur_clone() {
 	git config -f .gitmodules submodule."$1".path "$1"
 	git config -f .gitmodules submodule."$1".url https://$aur/"$b"
     fi
-    git submodule update --init --remote "$1"
+    git submodule update --init --remote --force "$1"
     excludefile=.git/modules/"$1"/info/exclude
 }
 
@@ -31,5 +31,9 @@ esac
 
 # update ignore files so git is happy
 touch "${excludefile:=$1/.gitignore}"
-exclude='/*.pkg.tar*'
-fgrep -q "$exclude" "$excludefile" || echo "$exclude" >> "$excludefile"
+add_excludes() {
+    for exclude; do
+	fgrep -q "$exclude" "$excludefile" || echo "$exclude" >> "$excludefile"
+    done
+}
+add_excludes '/*.pkg.tar*'

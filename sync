@@ -1,7 +1,7 @@
 #!/bin/sh
 read -r url < global-url
-mkdir -p build/repo
-cd build/repo || exit
+mkdir -p packages
+cd packages || exit
 rsync -lru "$url"/ ./
 for repo in ./*.db; do
     if repo="$(readlink -e "$repo")"; then
