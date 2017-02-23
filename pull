@@ -29,6 +29,9 @@ case "$d" in
 	;;
 esac
 
+# apply changes in the edits/ directory to the build files
+[ ! -f edits/"$b" ] || sed -i -f edits/"$b" "$1"/PKGBUILD
+
 # update ignore files so git is happy
 touch "${excludefile:=$1/.gitignore}"
 add_excludes() {

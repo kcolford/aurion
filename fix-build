@@ -16,9 +16,6 @@ for pkg in packages/"$b"-*.pkg.tar*; do
     find -L "$1" -type l -delete # delete broken symlinks
 done
 
-# apply changes in the edits/ directory to the build files
-[ ! -f edits/"$b" ] || sed -i -f edits/"$b" "$1"/PKGBUILD
-
 # change directories and run either a shell or whatever command was
 # specified in the rest of the args
 cd "$1" || exit; shift
