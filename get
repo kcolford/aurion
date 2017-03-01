@@ -8,10 +8,12 @@ mkdir -p "$d"
 # use git to clone from the aur
 aur_clone() {
     if [ ! -d "$1" ]; then
-	git config -f .gitmodules submodule."$1".path "$1"
-	git config -f .gitmodules submodule."$1".url https://$aur/"$b"
+	# git config -f .gitmodules submodule."$1".path "$1"
+	# git config -f .gitmodules submodule."$1".url https://$aur/"$b"
+	git add https://$aur/"$b" "$1"
     fi
-    git submodule update --init --remote --force "$1"
+    git submodule update --init "$1"
+    git -C "$1" pull
     excludefile=.git/modules/"$1"/info/exclude
 }
 
