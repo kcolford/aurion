@@ -3,18 +3,18 @@
 d="$(dirname "$1")"
 b="$(basename "$1")"
 
-# delete build files
-rm -rf build/"$b"
-rm -rf "$1"
-
 # remove submodule extras
 case "$d" in
     aur|my-aur)
-	git config --remove-section submodule."$1"
-	git config -f .gitmodules --remove-section submodule."$1"
+	git submodule deinit "$1"
+	git config -f .gitmodules --remove-section submodule."$d/$b"
 	rm -rf .git/modules/"$1"
 	;;
 esac
+
+# delete build files
+rm -rf build/"$b"
+rm -rf "$1"
 
 for repo in packages/*.db; do
     if repo="$(readlink -e "$repo")"; then
